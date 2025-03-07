@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Create Visualization{% endblock %}
+
+{% block content %}
+<h2 class="text-center mb-4">Create Visualization</h2>
+<form method="POST" class="mx-auto" style="max-width: 600px;">
+    <div class="mb-4">
+        <label for="variable1" class="form-label">Select Variable 1</label>
+        <select name="variable1" class="form-select" required>
+            <option value="" disabled selected>Select Variable 1</option>
+            {% for col in columns %}
+            <option value="{{ col }}">{{ col }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-4">
+        <label for="variable2" class="form-label">Select Variable 2</label>
+        <select name="variable2" class="form-select" required>
+            <option value="" disabled selected>Select Variable 2</option>
+            {% for col in columns %}
+            <option value="{{ col }}">{{ col }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-4">
+        <label for="plot_type" class="form-label">Select Plot Type</label>
+        <select name="plot_type" class="form-select" required>
+            <option value="scatter">Scatter Plot</option>
+            <option value="line">Line Plot</option>
+            <option value="bar">Bar Plot</option>
+            <option value="pie">Pie Chart</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Generate Plot</button>
+</form>
+
+{% if plot_path %}
+<h3 class="text-center mt-4">Generated Plot</h3>
+<div class="text-center">
+    <img src="{{ url_for('static', filename='plot.png') }}" class="img-fluid mt-3" alt="Plot">
+</div>
+{% endif %}
+{% endblock %}

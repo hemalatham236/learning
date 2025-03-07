@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Dataset Overview{% endblock %}
+
+{% block content %}
+<h2 class="text-center mb-4">Dataset Overview</h2>
+<div class="table-responsive">
+    {{ data_preview | safe }}
+</div>
+<a href="{{ url_for('visualize') }}" class="btn btn-primary mt-4">Visualize Data</a>
+{% endblock %}

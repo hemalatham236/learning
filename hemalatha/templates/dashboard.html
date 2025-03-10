@@ -3,12 +3,39 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block content %}
-<h2 class="text-center mb-4">Dashboard</h2>
-<form method="POST" enctype="multipart/form-data" class="mx-auto" style="max-width: 500px;">
-    <div class="mb-3">
-        <label for="file" class="form-label">Upload File</label>
-        <input type="file" name="file" class="form-control" required>
+<div class="d-flex" style="min-height: 80vh; background: linear-gradient(135deg, #7f00ff, #e100ff); color: white;">
+    <nav class="bg-white text-black p-4" style="width: 200px; min-height: 80vh;">
+        <h4 class="mb-4 text-center" style="color: #0047ab; font-weight: bold;">Dashboard</h4>
+        <ul class="nav flex-column" style="height: 80vh;">
+            <li class="nav-item mb-5"><a href="#" class="nav-link text-black">Overview</a></li>
+            <li class="nav-item mb-5"><a href="#" class="nav-link active bg-info text-white">Upload</a></li>
+            <li class="nav-item mb-5"><a href="#" class="nav-link text-black">Download</a></li>
+            <li class="nav-item mb-5"><a href="#" class="nav-link text-black">Settings</a></li>
+            <li class="nav-item mb-5"><a href="#" class="nav-link text-black">Log Out</a></li>
+        </ul>
+    </nav>
+    <div class="flex-grow-1 d-flex flex-column align-items-center justify-content-center">
+        <h2 class="mb-4" style="width: 80%;">Welcome to the Dashboard</h2>
+        <div class="card p-4" style="width: 90%; max-width: 1000px; height: 400px; background: #f8f9fa; border-width: 1px;">
+            <form method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="file" class="form-label">Upload File</label>
+                    <input type="file" name="file" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="uploadTo" class="form-label">Upload to</label>
+                    <select name="uploadTo" class="form-select">
+                        <option value="local">Local</option>
+                        <option value="s3">S3</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="s3Key" class="form-label">S3 Key (for S3 uploads)</label>
+                    <input type="text" name="s3Key" class="form-control">
+                </div>
+                <button type="submit" class="btn w-100" style="background: linear-gradient(90deg, #00c6ff, #0072ff); color: white;">Upload</button>
+            </form>
+        </div>
     </div>
-    <button type="submit" class="btn btn-success w-100">Upload</button>
-</form>
+</div>
 {% endblock %}

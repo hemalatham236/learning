@@ -49,14 +49,31 @@
         button:hover {
             background: #1e3a8a;
         }
+        .alert {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .alert-danger {
+            background: #f87171;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
     <div class="login-container">
         <h2>Login</h2>
-        <form action="dashboard" method="get">
-            <input type="text" placeholder="Username" required>
-            <input type="password" placeholder="Password" required>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form action="/" method="post">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
             <button type="submit">Login</button>
         </form>
     </div>

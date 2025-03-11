@@ -104,9 +104,9 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
 
 
-# Read CSV file with low_memory=False to avoid DtypeWarning
 def load_data(file_path):
     return pd.read_csv(file_path, low_memory=False)
+
 
 
 # Plot generation logic
